@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- include links -->
+ <%- include("inc/links") %>
+  <body>
+
+<!-- include sidebar -->
+<%- include("inc/sidebar") %>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+
+      <!-- include sidebar -->
+<%- include("inc/header") %>
+
+      <!-- ========== notification-wrapper start ========== -->
+      <div class="notification-wrapper">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2>Edit Task</h2>
+                </div>
+              </div>
+              <!-- end col -->
+              <div class="col-md-6">
+                <div class="breadcrumb-wrapper">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="#0">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item"><a href="#0">Task</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Edit
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+          <div class="card-style">
+ 
+            <div class="card-style mb-30">
+                <h6 class="mb-25">Kindly form below to add your task</h6>
+                <form method ="post" action="/edit-task/<%= data.task_id %>">
+                <div class="input-style-2">
+                  <label>Title</label>
+                  <input type="text" placeholder="Title" value="<%= data.title %>" id="title" name="title" required />
+                  <span class="icon"> <i class="lni lni-control-panel"></i> </span>
+                </div>
+                <div class="select-style-1">
+                    <label>Priority</label>
+                <div class="select-position">
+                  <select name="priority" id="priority">
+                    <option value="<%= data.priority %>"><%= data.priority %></option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="input-style-1">
+                      <label>Previous Task Deadline</label>
+                      <input type="text" value="<%= data.dead_line %>" name="prev_date" readonly/>
+                  </div>
+                </div>
+                  <div class="col-lg-6">
+                    <div class="input-style-1">
+                      <label> Set New Task Deadline</label>
+                      <input type="date"  id="deadline" value="<%= data.dead_line %>" name="deadline" />
+                  </div>
+                </div>
+                <div class="input-style-1">
+                    <label>Task Description</label>
+                    <textarea placeholder="Description" id="description" name="description" required
+                    rows="5"><%= data.description %></textarea>
+                  </div>
+</div>
+                <button class="btn btn-primary">Submit</button>
+                </form>
+                <!-- end input -->
+              </div>
+
+
+          </div>
+        </div>
+        <!-- end container -->
+      </div>
+      <!-- ========== notification-wrapper start ========== -->
+  
+<!-- include footer -->
+ <%- include("inc/footer") %>
+</main>
+<!-- ======== main-wrapper end =========== -->
+<!-- include footer -->
+<%- include("inc/footerLinks") %>
+</body>
+</html>

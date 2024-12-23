@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- include links -->
+ <%- include("inc/links") %>
+  <body>
+
+<!-- include sidebar -->
+<%- include("inc/sidebar") %>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+
+      <!-- include sidebar -->
+<%- include("inc/header") %>
+
+
+      <!-- ========== section start ========== -->
+      <section>
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title d-flex align-items-center flex-wrap">
+                  <h2 class="mr-40">Task</h2>
+                  <a href="/add-task" class="main-btn primary-btn btn-hover btn-sm">
+                    <i class="lni lni-plus mr-5"></i> Add A New Task</a>
+                </div>
+              </div>
+              <!-- end col -->
+              <div class="col-md-6">
+                <div class="breadcrumb-wrapper">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="#0">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        View Task
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+          <!-- Invoice Wrapper Start -->
+          <div class="invoice-wrapper">
+            <div class="row">
+              <div class="col-12">
+                <div class="invoice-card card-style mb-30">
+                  <div class="invoice-header">
+                    <div class="invoice-for">
+                      <h2 class="mb-10">Task Title</h2>
+                      <p class="text-lg">
+                        <%= data.title %>
+                      </p>
+                    </div>
+                    <div class="invoice-logo">
+                      <!-- <img src="/assets/images/invoice/uideck-logo.svg" alt="" /> -->
+                    </div>
+                    <div class="invoice-date">
+                      <p><span>Upload Date:</span> <%= data.stamp_date %></p>
+                        <% if (data.days_left < 3) { %>
+                          <p><span>Dead Line:</span> 
+                          <span style="color:red"><%= data.dead_line.substring(0, 25) %></span>
+                        <% } else { %>
+                          <%= data.dead_line.substring(0, 25) %>
+                        <% } %>
+                      </p>
+                      
+                      <p><span>Priority:</span> <%= (data.priority) %></p>
+                    </div>
+                  </div>
+                  <div >
+                    <%= data.description %>
+                  </div>
+
+
+                 
+                      
+                        <% if(data.days_left < 3){ %>
+                          <div class="note-wrapper danger-alert py-4 px-sm-3 px-lg-5">
+                            <div class="alert">
+                              <h5 class="text-bold mb-15">Notes:</h5>
+                          <p class="text-sm text-gray">
+                           Hurry up! you have just <%= data.days_left %>days left to finish up <%= data.title %> project that your set on <%= data.stamp_date %>.
+                           Just stay focus you can still make it happen even though the time is now small
+                          </p>
+
+                        <% } else { %>
+
+                          <div class="note-wrapper warning-alert py-4 px-sm-3 px-lg-5">
+                            <div class="alert">
+                              <h5 class="text-bold mb-15">Notes:</h5>
+                        <p class="text-sm text-gray">
+                        <%= data.days_left %> days left to finish up <%= data.title %> project that your set on <%= data.stamp_date %>.<br />
+                       The finish line is in sight. Give it everything you have got! Don't let fatigue or doubts hold it within sight, you are almost there!
+                      </p>
+                      
+                   <% } %>
+                    </div>
+                  </div>
+                  <div class="invoice-action">
+                    <ul class="d-flex flex-wrap align-items-center justify-content-center">
+                      <li class="m-2">
+                        <a href="/edit-task/<%= data.task_id %>" class="main-btn primary-btn-outline btn-hover">
+                          Edit Task
+                        </a>
+                      </li>
+                      
+                      <li class="m-2">
+                        <a href="/delete-task/<%= data.task_id %>" class="main-btn danger-btn-outline btn-hover">
+                          Delete Task
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- End Card -->
+              </div>
+              <!-- ENd Col -->
+            </div>
+            <!-- End Row -->
+          </div>
+          <!-- Invoice Wrapper End -->
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- ========== section end ========== -->
+
+<!-- include footer -->
+<%- include("inc/footer") %>
+</main>
+<!-- ======== main-wrapper end =========== -->
+<!-- include footer -->
+<%- include("inc/footerLinks") %>
+</body>
+</html>

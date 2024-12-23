@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- include links -->
+ <%- include("inc/links") %>
+  <body>
+
+<!-- include sidebar -->
+<%- include("inc/sidebar") %>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+
+      <!-- include sidebar -->
+<%- include("inc/header") %>
+
+      <!-- ========== notification-wrapper start ========== -->
+      <div class="notification-wrapper">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2>Task Management</h2>
+                </div>
+              </div>
+              <!-- end col -->
+              <div class="col-md-6">
+                <div class="breadcrumb-wrapper">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="#0">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Task Management
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+          <div class="card-style">
+
+            <!-- task priority -->
+            <div class="row">
+              <div class="col-lg-6">
+                <table border="0" width="100%">
+                  <tr>
+                    <td>
+                      Task Priority : 
+                    </td>
+                    <td>
+                      <a href="/Low">Low </a>
+                    </td>
+                    <td>
+                      <a href="/Medium">Medium</a>
+                    </td>
+                    <td>
+                      <a href="/High">High</a>
+                    </td>
+                    <td>
+                      <a href="/view-all">All</a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+     <br />
+            <div class="alert alert-info"><%= msg; %></div>
+          <% data.forEach((task) => { %>
+            <div class="single-notification">
+              
+              <div class="notification">
+                <div class="image <%= task.color %>">
+                  <span><%= (task.title).substring(0,1).toUpperCase() %></span>
+                </div>
+                <a href="/view-task/<%= task.task_id %>" class="content">
+                  <h6><%= task.title %></h6> 
+                  <p class="text-sm text-gray">
+                    <%= task.description %>
+                  </p>
+                  <span class="text-sm text-medium text-gray"><%= task.stamp_date %></span>
+                </a>
+              </div>
+              
+              <div class="action">
+                <button class="delete-btn">
+                 <a href="/delete-task/<%= task.task_id %>" class="text-danger"><i class="lni lni-trash-can"></i></a>
+                </button>
+                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="lni lni-more-alt"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                  <li class="dropdown-item">
+                    <a href="/view-task/<%= task.task_id %>" class="text-gray">See full Task Details</a>
+                  </li>
+                  <li class="dropdown-item">
+                    <a href="/edit-task/<%= task.task_id %>" class="text-gray">Edit Task</a>
+                  </li>
+                </ul>
+              </div>
+            <!-- end single notification -->
+          </div>
+          <% }) %>
+        </div>
+        <!-- end container -->
+      </div>
+      <!-- ========== notification-wrapper start ========== -->
+  
+<!-- include footer -->
+ <%- include("inc/footer") %>
+</main>
+<!-- ======== main-wrapper end =========== -->
+<!-- include footer -->
+<%- include("inc/footerLinks") %>
+</body>
+</html>

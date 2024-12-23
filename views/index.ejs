@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- include links -->
+ <%- include("inc/links") %>
+  <body>
+
+<!-- include sidebar -->
+<%- include("inc/sidebar") %>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+
+      <!-- include sidebar -->
+<%- include("inc/header") %>
+
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+
+
+     <!-- ========== title-wrapper start ========== -->
+     <div class="title-wrapper pt-30">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="title">
+            <h2>Welcome <%= (session.full_name).substring(0,10) %>!</h2>
+          </div>
+        </div>
+        <!-- end col -->
+        <div class="col-md-6">
+          <div class="breadcrumb-wrapper">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#0">Task Manager</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Dashboard
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+        <!-- end col -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- ========== title-wrapper end ========== -->
+          
+          <!-- End Row -->
+          <div class="row">
+            <div class="col-lg-7">
+              <div class="card-style calendar-card mb-30">
+                <div id="calendar-mini"></div>
+              </div>
+            </div>
+            <!-- End Col -->
+            <div class="col-lg-5">
+              <div class="card-style mb-30">
+                <div class="title d-flex flex-wrap align-items-center justify-content-between">
+                  <div class="left">
+                    <h6 class="text-medium mb-30">Recent Tasks</h6>
+                  </div>
+                  
+                </div>
+                <!-- End Title -->
+                <div class="table-responsive">
+                  <table class="table top-selling-table">
+                    <thead>
+                      <caption><small class="text-primary"> Showing <%= row_num %> results</small></caption>
+                      <tr>
+                        <th class="min-width">
+                          <h6 class="text-sm text-medium">
+                           Task Title 
+                          </h6>
+                        </th>
+                        <th>
+                          <h6 class="text-sm text-medium text-end">
+                           Priority 
+                          </h6>
+                        </th>
+                        <th>
+                          <h6 class="text-sm text-medium text-end">
+                            Actions 
+                          </h6>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% data.forEach((task) => { %>
+                      <tr>
+                        <td>
+                          <p class="text-sm"><%= task.title %></p>
+                        </td>
+                        <td>
+                          <p class="text-sm"><%= task.priority %></p>
+                        </td>
+                        
+                        <td align="center">
+                          <a href="/view-task/<%= task.task_id %>">View</a>
+                        </td>
+                      </tr>
+                     <% }) %>
+                    </tbody>
+                  </table>
+                  <!-- End Table -->
+                </div>
+              </div>
+            </div>
+            <!-- End Col -->
+          </div>
+          <!-- End Row -->
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- ========== section end ========== -->
+
+<!-- include footer -->
+ <%- include("inc/footer") %>
+    </main>
+    <!-- ======== main-wrapper end =========== -->
+<!-- include footer -->
+<%- include("inc/footerLinks") %>
+  </body>
+</html>

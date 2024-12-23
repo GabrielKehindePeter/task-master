@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- include links -->
+ <%- include("inc/links") %>
+  <body>
+
+<!-- include sidebar -->
+<%- include("inc/sidebar") %>
+
+    <!-- ======== main-wrapper start =========== -->
+    <main class="main-wrapper">
+
+      <!-- include sidebar -->
+<%- include("inc/header") %>
+
+      <!-- ========== section start ========== -->
+      <section class="section">
+        <div class="container-fluid">
+          <!-- ========== title-wrapper start ========== -->
+          <div class="title-wrapper pt-30">
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="title">
+                  <h2>Profile Settings</h2>
+                </div>
+              </div>
+              <!-- end col -->
+              <div class="col-md-6">
+                <div class="breadcrumb-wrapper">
+                  <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="#0">Dashboard</a>
+                      </li>
+                      <li class="breadcrumb-item"><a href="#0">User</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">
+                        Settings
+                      </li>
+                    </ol>
+                  </nav>
+                </div>
+              </div>
+              <!-- end col -->
+            </div>
+            <!-- end row -->
+          </div>
+          <!-- ========== title-wrapper end ========== -->
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="card-style settings-card-1 mb-30">
+                <div class="title mb-30 d-flex justify-content-between align-items-center">
+                  <h6>My Profile</h6>
+                  <button class="border-0 bg-transparent">
+                    <i class="lni lni-pencil-alt"></i>
+                  </button>
+                </div>
+                <div class="profile-info">
+                  <div class="d-flex align-items-center mb-30">
+                    <div class="profile-image">
+                      <img src="/assets/images/profile/profile-11.png" alt="" />
+                      <div class="update-image">
+                        <input type="file" />
+                        <label for=""><i class="lni lni-cloud-upload"></i></label>
+                      </div>
+                    </div>
+                    <div class="profile-meta">
+                      <h5 class="text-bold text-dark mb-10"><%= session.full_name %></h5>
+                      <p class="text-sm text-gray"><%= session.email %></p>
+                    </div>
+                  </div>
+            <p><b>Phone:</b> 08130146023</p>
+            <p style="text-align: justify;"><b>Address :</b> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquid, totam magni. Quos deserunt numquam asperiores nemo, voluptatem placeat praesentium nihil excepturi. Cupiditate, dicta architecto. Adipisci consectetur quis nemo! Quisquam, cum.</p>
+                </div>
+              </div>
+              <!-- end card -->
+            </div>
+            <!-- end col -->
+
+            <div class="col-lg-6">
+              <div class="card-style settings-card-2 mb-30">
+                <div class="title mb-30">
+                  <h6>Edit Profile</h6>
+                  <% if (typeof msg !== 'undefined' && msg !== '') { %>
+                    <div class="alert alert-info">
+                    <%= msg %>
+                  </div>
+                  <% } %>
+                </div>
+                <form action="/profile/<%= session.user_id %>" method="post">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-style-1">
+                        <label>Full Name</label>
+                        <input type="text" name="name" placeholder="Full Name" value="<%= session.full_name %>" />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="input-style-1">
+                        <label>Email</label>
+                        <input type="email" name="email" placeholder="Email" value="<%= session.email %>" />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="input-style-1">
+                        <label>Phone</label>
+                        <input type="tel" placeholder="Phone" id="phone" name="phone" />
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="input-style-1">
+                        <label>Address</label>
+                        <textarea placeholder="Type here" rows="6" id="address" name="address"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <button class="main-btn primary-btn btn-hover">
+                        Update Profile
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- end card -->
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- ========== section end ========== -->
+  
+<!-- include footer -->
+ <%- include("inc/footer") %>
+</main>
+<!-- ======== main-wrapper end =========== -->
+<!-- include footer -->
+<%- include("inc/footerLinks") %>
+</body>
+</html>
